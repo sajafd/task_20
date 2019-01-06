@@ -65,14 +65,11 @@ class RestaurantDetailSerializer(serializers.ModelSerializer):
         lookup_url_kwarg = "restaurant_id"
         )
 
-    # def get_items_list (self, obj):
-    #     items_list = []
-    #     for item in Items.objects.all():
-    #         items_list.append(item)
-    #     return Item.objects.all()
 
     def get_items_list (self, obj):
-        return ItemSerializer(Item.objects.all())
+        list = Item.objects.filter(restaurant=obj)
+        return ItemSerializer(list, many=True).data # you have to add .data otherwise you got unserializable error
+                                                    # have to add many=True so that it accepts receiving multiple items
 
     class Meta:
         model = Restaurant
