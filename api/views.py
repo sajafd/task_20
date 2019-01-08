@@ -10,6 +10,7 @@ from .serializers import (
     RestaurantListSerializer,
     RestaurantDetailSerializer,
     RestaurantCreateUpdateSerializer,
+    RegistrationSerializer,
 )
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from .permissions import IsOwner
@@ -53,3 +54,11 @@ class RestaurantDeleteView(DestroyAPIView):
     lookup_field = 'id'
     lookup_url_kwarg = 'restaurant_id'
     permission_classes = [IsAuthenticated,IsAdminUser]
+
+
+
+class Registration(CreateAPIView):
+    
+    serialzier_class = RegistrationSerializer
+    
+
