@@ -57,8 +57,7 @@ class RestaurantDeleteView(DestroyAPIView):
 
 
 
-class Registration(CreateAPIView):
-    
+class Registration(CreateAPIView):  
     serialzier_class = RegistrationSerializer
     
 
